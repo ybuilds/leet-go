@@ -2,23 +2,6 @@ package main
 
 import "fmt"
 
-// func removeDuplicates(nums []int) int {
-// 	i, j, count := 0, 1, 0
-
-// 	for i < len(nums) && j < len(nums) {
-// 		if nums[i] == nums[j] {
-// 			j++
-// 			continue
-// 		}
-// 		nums[i+1], nums[j] = nums[j], nums[i+1]
-// 		i++
-// 		j++
-// 		count++
-// 	}
-
-// 	return count + 1
-// }
-
 func removeDuplicates(nums []int) int {
 	write, read := 0, 1
 
@@ -38,7 +21,7 @@ func removeDuplicatesDriver() {
 	res := removeDuplicates(nums)
 	fmt.Println(res)
 
-	for i := 0; i < res; i++ {
+	for i := range res {
 		fmt.Printf("%d ", nums[i])
 	}
 	fmt.Println()
