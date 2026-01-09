@@ -38,8 +38,8 @@ func removeDuplicatesDriver() {
 	res := removeDuplicates(nums)
 	fmt.Println(res)
 
-	for _, i := range nums {
-		fmt.Printf("%d ", i)
+	for i := 0; i < res; i++ {
+		fmt.Printf("%d ", nums[i])
 	}
 	fmt.Println()
 }
