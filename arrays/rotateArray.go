@@ -2,15 +2,21 @@ package main
 
 import "fmt"
 
-func rotate(nums []int, k int) {
-	for k > 0 {
-		elem := nums[len(nums)-1]
-		for i := len(nums) - 1; i >= 1; i-- {
-			nums[i] = nums[i-1]
-		}
-		nums[0] = elem
-		k--
+func reversePart(nums []int, start, end int) {
+	for start < end {
+		nums[start], nums[end] = nums[end], nums[start]
+		start++
+		end--
 	}
+}
+
+func rotate(nums []int, k int) {
+	n := len(nums)
+	k = k % n
+
+	reversePart(nums, 0, n-1)
+	reversePart(nums, 0, k-1)
+	reversePart(nums, k, n-1)
 }
 
 func rotateDriver() {
