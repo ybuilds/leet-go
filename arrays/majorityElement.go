@@ -5,19 +5,23 @@ import (
 )
 
 func majorityElement(nums []int) int {
-	frequency := make(map[int]int)
+	candidate, count := nums[0], 0
 
-	for _, num := range nums {
-		frequency[num] += 1
-		if frequency[num] > (len(nums) / 2) {
-			return num
+	for i := 1; i < len(nums); i++ {
+		if count == 0 {
+			candidate = nums[i]
+		} else if nums[i] == candidate {
+			count++
+		} else {
+			count--
 		}
 	}
 
-	return -1
+	return candidate
 }
 
 func majorityElementDriver() {
 	nums := []int{3, 2, 3}
-	fmt.Println(majorityElement(nums))
+	res := majorityElement(nums)
+	fmt.Println(res)
 }
