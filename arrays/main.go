@@ -1,5 +1,5 @@
 package main
 
 func main() {
-	productExceptSelfDriver()
+	maxProfit2Driver()
 }
