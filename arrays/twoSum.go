@@ -4,17 +4,17 @@ import "fmt"
 
 func twoSum(nums []int, target int) []int {
 	res := make([]int, 2)
-
-	hashmap := make(map[int]int)
+	complement := make(map[int]int)
 
 	for i := range nums {
-		complement := target - nums[i]
-		if _, ok := hashmap[complement]; ok {
-			res[0] = i
-			res[1] = hashmap[complement]
+		comp := target - nums[i]
+		_, ok := complement[comp]
+		if ok {
+			res[1] = i
+			res[0] = complement[comp]
 			break
 		}
-		hashmap[nums[i]] = i
+		complement[nums[i]] = i
 	}
 
 	return res
