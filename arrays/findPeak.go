@@ -5,7 +5,7 @@ import (
 )
 
 func findPeaks(mountain []int) []int {
-	peaks := []int{}
+	var peaks []int
 	i := 1
 
 	for i < len(mountain)-1 {

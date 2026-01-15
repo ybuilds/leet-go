@@ -2,40 +2,28 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func firstMissingPositive(nums []int) int {
-	max := math.MinInt
+	n := len(nums)
 
-	for _, i := range nums {
-		if i > max {
-			max = i
+	for i := 0; i < n; i++ {
+		for nums[i] > 0 && nums[i] <= n && nums[nums[i]-1] != nums[i] {
+			target := nums[i] - 1
+			nums[target], nums[i] = nums[i], nums[target]
 		}
 	}
 
-	if max < 0 {
-		return 1
-	}
-
-	exist := make([]bool, max+1)
-
-	for _, i := range nums {
-		if i != math.MaxInt && i > 0 {
-			exist[i] = true
+	for i := 0; i < n; i++ {
+		if i+1 != nums[i] {
+			return i + 1
 		}
 	}
 
-	for i := range exist {
-		if !exist[i] {
-			return i
-		}
-	}
-
-	return len(exist)
+	return n + 1
 }
 
-func firstPositiveDriver() {
+func firstMissingPositiveDriver() {
 	nums := []int{1, 2, 0}
 	res := firstMissingPositive(nums)
 	fmt.Println(res)
